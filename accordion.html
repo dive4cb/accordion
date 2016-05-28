@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Accessible Accordion Widget</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <!--    Style for accordion to W3C Spec-->
+    <style>
+        #tablist h2 {
+            width: 100%;
+            border: thin black solid;
+            text-align: center;
+            background-color: #eee;
+            padding: 0;
+            margin: 2px 0;
+        }
+        
+        p.moreinfo {
+            border: thin black solid;
+            padding: 4px;
+            margin: 0;
+        }
+        
+        h2.clickme span {
+            height: 12px;
+            width: 12px;
+            background-image: url("plus_minus_sprite.gif");
+            display: inline-block;
+        }
+        
+        h2.clickme span.minus {
+            background-position: right;
+        }
+        
+        h2.clickme span.plus {
+            background-position: left;
+        }
+        
+        :focus {
+            outline: 4px solid blue;
+        }
+    </style>
+    <!--    Style for simple accordion-->
+    <style>
+        #simpacc h2 {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #simpacc h2 button {
+            font-weight: 700;
+            font-size: 1em;
+            width: 100%;
+            border: thin black solid;
+            text-align: center;
+            background-color: #eee;
+            padding: 0;
+            margin: 2px 0;
+        }
+        
+        p.simpmoreinfo {
+            border: thin black solid;
+            padding: 4px;
+            margin: 0;
+        }
+        
+        h2.simpclickme button span {
+            height: 12px;
+            width: 12px;
+            background-image: url("plus_minus_sprite.gif");
+            display: inline-block;
+        }
+        
+        h2.simpclickme button span.minus {
+            background-position: right;
+        }
+        
+        h2.simpclickme button span.plus {
+            background-position: left;
+        }
+        
+        :focus {
+            outline: 4px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Accessible Accordion Widget</h1>
+    <h2>Authors</h2>
+    <p>CB Averitt</p>
+    <p>Birkir Gunnarsson</p>
+    <p>Denis Boudreau</p>
+    <h2>Dates</h2>
+    <h3>Created</h3>
+    <p>May 25, 2016</p>
+    <h3>Last Modified</h3>
+    <p>May 28, 2016</p>
+    <h2>Introduction</h2>
+    <p>Information on an accessible accordion widget.</p>
+    <p><a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion">Based off the W3C WAI-ARIA Authoring Practices for accordion</a></p>
+    <p>Practices progressive enhancement.</p>
+    <p>Mobile/Responsive Design Friendly</p>
+    <p>Validates HTML5.</p>
+    <p>Passes automated accessibility checks.</p>
+    <h2>Persona</h2>
+    <p>Information on personas.</p>
+    <h2>Accordion Live Example</h2>
+    <div id="tablist">
+        <h2 id="tab1" class="clickme">Topic 1 <span class="plus"></span></h2>
+        <p class="moreinfo" aria-labelledby="tab1">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
+
+        <h2 id="tab2" class="clickme">Topic 2 <span class="plus"></span></h2>
+        <p class="moreinfo" aria-labelledby="tab2">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
+
+        <h2 id="tab3" class="clickme">Topic 3 <span class="plus"></span></h2>
+        <p class="moreinfo" aria-labelledby="tab3">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
+    </div>
+    <h3>Code</h3>
+    <h4>HTML</h4>
+    <h4>CSS</h4>
+    <h4>JavaScript</h4>
+    <h2>Simplified Accordion Live Example (in development)</h2>
+    <div id="simpacc">
+        <h2 id="simpacc1" class="simpclickme"><button>Simple Topic 1 <span class="plus"></span></button></h2>
+        <p class="simpmoreinfo">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
+
+        <h2 id="simpacc2" class="simpclickme"><button>Simple Topic 2 <span class="plus"></span></button></h2>
+        <p class="simpmoreinfo">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
+
+        <h2 id="simpacc3" class="simpclickme"><button>Simple Topic 3 <span class="plus"></span></button></h2>
+        <p class="simpmoreinfo">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
+    </div>
+    <h3>Code</h3>
+    <h4>HTML</h4>
+    <h4>CSS</h4>
+    <h4>JavaScript</h4>
+    <h2>Temporary Notes for CB, Denis and Birkir</h2>
+    <p>I think we should have these templates in Wordpress so we can easily add a discussion forum at the bottom.</p>
+    <p>Must these pages practice progressive enhancement or only the widget?</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <!--    Script for accordion to W3C Spec-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".moreinfo").css("display", "none").attr("role", "tabpanel");
+            $(".clickme").attr("aria-expanded", "false").attr("role", "tab").attr("tabindex", "-1");
+            $("#tablist").attr("role", "tablist").attr("tabindex", "0");
+            $("#tablist").attr("aria-multiselectable", "true");
+            $(".clickme").focus(function () {
+                $(this).attr("aria-selected", "true");
+            });
+            $(".clickme").blur(function () {
+                $(this).removeAttr("aria-selected");
+            });
+            $(".clickme").click(function () {
+                var n = $(this).attr("aria-expanded");
+                if (n == "false") {
+                    $(this).next("p").css("display", "block");
+                    $(this).attr("aria-expanded", "true");
+                    $(this).children("span").attr("class", "minus");
+                } else {
+                    $(this).next("p").css("display", "none");
+                    $(this).attr("aria-expanded", "false");
+                    $(this).children("span").attr("class", "plus");
+                }
+            });
+            $("#tablist").focus(function () {
+                $(this).keydown(function (e) {
+                    var code = e.which;
+                    if (code == 13 || code == 40 || code == 39) e.preventDefault();
+                    if (code == 13 || code == 40 || code == 39) {
+                        $(this).children("h2.clickme:first").focus();
+                        $(this).off("keydown");
+                    };
+                });
+            });
+            $(".clickme").keydown(function (e) {
+                var code = e.which;
+                if (code == 32 || code == 13 || code == 38 || code == 37 || code == 40 || code == 39) e.preventDefault();
+                if (code == 32 || code == 13) {
+                    $(this).click();
+                };
+                if (code == 38 || code == 37) {
+                    $(this).prevAll("h2.clickme:first").focus();
+                };
+                if (code == 40 || code == 39) {
+                    $(this).nextAll("h2.clickme:first").focus();
+                };
+            });
+        });
+    </script>
+    <!--    Script for simple accordion-->
+    <script>
+        $(document).ready(function () {
+            $(".simpmoreinfo").css("display", "none");
+            $(".simpclickme button").attr("aria-expanded", "false");
+        });
+
+        $(".simpclickme button").click(function () {
+            //    alert("test");
+            var n = $(this).attr("aria-expanded");
+            if (n == "false") {
+                $(this).parent().next("p").css("display", "block");
+                $(this).attr("aria-expanded", "true");
+                $(this).children("span").attr("class", "minus");
+            } else {
+                $(this).parent().next("p").css("display", "none");
+                $(this).attr("aria-expanded", "false");
+                $(this).children("span").attr("class", "plus");
+            }
+        });
+    </script>
+</body>
+
+</html>
