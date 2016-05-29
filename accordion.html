@@ -90,8 +90,6 @@
 <body>
 
     <h1>Accessible Accordion Widget</h1>
-    <p>Adding Some Crazy Code</p>
-    <p>What the heck, more code.</p>
     <h2>Authors</h2>
     <p>CB Averitt</p>
     <p>Birkir Gunnarsson</p>
@@ -113,13 +111,13 @@
     <h2>Accordion Live Example</h2>
     <div id="tablist">
         <h2 id="tab1" class="clickme">Topic 1 <span class="plus"></span></h2>
-        <p class="moreinfo" aria-labelledby="tab1">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
+        <p class="moreinfo" aria-labelledby="tab1">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
 
         <h2 id="tab2" class="clickme">Topic 2 <span class="plus"></span></h2>
-        <p class="moreinfo" aria-labelledby="tab2">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
+        <p class="moreinfo" aria-labelledby="tab2">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
 
         <h2 id="tab3" class="clickme">Topic 3 <span class="plus"></span></h2>
-        <p class="moreinfo" aria-labelledby="tab3">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
+        <p class="moreinfo" aria-labelledby="tab3">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
     </div>
     <h3>Code</h3>
     <h4>HTML</h4>
@@ -170,15 +168,33 @@
                 }
             });
             $("#tablist").focus(function () {
-                $(this).keydown(function (e) {
+                $(this).on("keydown.tablist", function (e) {
                     var code = e.which;
                     if (code == 13 || code == 40 || code == 39) e.preventDefault();
                     if (code == 13 || code == 40 || code == 39) {
                         $(this).children("h2.clickme:first").focus();
-                        $(this).off("keydown");
+                        $(this).off("keydown.tablist");
                     };
                 });
             });
+            
+            $("*").focus(function () {
+                $(this).on("keydown.moreinfo", function (e) {
+                    var code = e.which;
+                    if (code == 38 || code == 37 || code == 40 || code == 39) e.preventDefault();
+                    if (code == 40 || code == 39) {
+                        console.log(code);
+                        $(this).parent().next("h2.clickme").focus();
+                        $(this).off("keydown.moreinfo");
+                    };
+                    if (code == 38 || code == 37) {
+                        console.log(code);
+                        $(this).parent().prev("h2.clickme").focus();
+                        $(this).off("keydown.moreinfo");
+                    };
+                });
+            });
+            
             $(".clickme").keydown(function (e) {
                 var code = e.which;
                 if (code == 32 || code == 13 || code == 38 || code == 37 || code == 40 || code == 39) e.preventDefault();
