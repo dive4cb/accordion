@@ -111,13 +111,13 @@
     <h2>Accordion Live Example</h2>
     <div id="tablist">
         <h2 id="tab1" class="clickme">Topic 1 <span class="plus"></span></h2>
-        <p class="moreinfo" aria-labelledby="tab1">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
+        <p class="moreinfo">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
 
         <h2 id="tab2" class="clickme">Topic 2 <span class="plus"></span></h2>
-        <p class="moreinfo" aria-labelledby="tab2">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
+        <p class="moreinfo">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
 
         <h2 id="tab3" class="clickme">Topic 3 <span class="plus"></span></h2>
-        <p class="moreinfo" aria-labelledby="tab3">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
+        <p class="moreinfo">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is another link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
     </div>
     <h3>Code</h3>
     <h4>HTML</h4>
@@ -146,7 +146,12 @@
     <!--    Script for accordion to W3C Spec-->
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".moreinfo").css("display", "none").attr("role", "tabpanel");
+            $(".clickme").each(function () {
+                var n = $(this).attr("id");
+                $(this).next("p.moreinfo").attr("aria-labelledby", n);
+            });
+
+            $(".moreinfo").css("display", "none").attr("role", "tabpanel").attr("aria-hidden", "true");
             $(".clickme").attr("aria-expanded", "false").attr("role", "tab").attr("tabindex", "-1");
             $("#tablist").attr("role", "tablist").attr("tabindex", "0");
             $("#tablist").attr("aria-multiselectable", "true");
@@ -157,15 +162,17 @@
                 $(this).removeAttr("aria-selected");
             });
             $(".clickme").click(function () {
-                var n = $(this).attr("aria-expanded");
-                if (n == "false") {
-                    $(this).next("p").css("display", "block");
+                var n = $(this).next("p").css("display");
+                if (n == "none") {
+                    $(this).next("p").css("display", "block").removeAttr("aria-hidden");
                     $(this).attr("aria-expanded", "true");
                     $(this).children("span").attr("class", "minus");
+                    $(this).focus();
                 } else {
-                    $(this).next("p").css("display", "none");
+                    $(this).next("p").css("display", "none").attr("aria-hidden", "true");
                     $(this).attr("aria-expanded", "false");
                     $(this).children("span").attr("class", "plus");
+                    $(this).focus();
                 }
             });
             $("#tablist").focus(function () {
@@ -184,7 +191,7 @@
                     var code = e.which;
                     if (code == 27) e.preventDefault();
                     if (code == 27) {
-                        $(".moreinfo").css("display", "none");
+                        $(".moreinfo").css("display", "none").attr("aria-hidden", "true");
                         $(".clickme").attr("aria-expanded", "false");
                         $(".clickme").children("span").attr("class", "plus");
 
@@ -199,12 +206,12 @@
                     var code = e.which;
                     if (code == 38 || code == 37 || code == 40 || code == 39) e.preventDefault();
                     if (code == 40 || code == 39) {
-                        console.log(code);
+                        //   console.log(code);
                         $(this).parent().next("h2.clickme").focus();
                         $(this).off("keydown.moreinfo");
                     };
                     if (code == 38 || code == 37) {
-                        console.log(code);
+                        //  console.log(code);
                         $(this).parent().prev("h2.clickme").focus();
                         $(this).off("keydown.moreinfo");
                     };
@@ -234,9 +241,8 @@
         });
 
         $(".simpclickme button").click(function () {
-            //    alert("test");
-            var n = $(this).attr("aria-expanded");
-            if (n == "false") {
+            var n = $(this).parent().next("p").css("display");
+            if (n == "none") {
                 $(this).parent().next("p").css("display", "block");
                 $(this).attr("aria-expanded", "true");
                 $(this).children("span").attr("class", "minus");
