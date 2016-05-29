@@ -178,18 +178,22 @@
                     };
                 });
             });
-            
+
             $("#tablist").focusin(function () {
                 $(this).on("keydown.esc", function (e) {
                     var code = e.which;
                     if (code == 27) e.preventDefault();
                     if (code == 27) {
+                        $(".moreinfo").css("display", "none");
+                        $(".clickme").attr("aria-expanded", "false");
+                        $(".clickme").children("span").attr("class", "plus");
+
                         $(this).focus();
                         $(this).off("keydown.esc");
                     };
                 });
             });
-            
+
             $("*").focus(function () {
                 $(this).on("keydown.moreinfo", function (e) {
                     var code = e.which;
@@ -206,7 +210,7 @@
                     };
                 });
             });
-            
+
             $(".clickme").keydown(function (e) {
                 var code = e.which;
                 if (code == 32 || code == 13 || code == 38 || code == 37 || code == 40 || code == 39) e.preventDefault();
