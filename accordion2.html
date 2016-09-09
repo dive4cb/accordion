@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Accessible Accordion Widget 2</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <!--    Style for simple accordion-->
+    <link rel="stylesheet" href="accordion2function.css" type="text/css" />
+</head>
+
+<body>
+
+    <h1>Accessible Accordion Widget 2</h1>
+    <h2>Introduction</h2>
+    <p>This is a variation on the accordion pattern that departs from the <a href="http://www.w3.org/TR/wai-aria-practices/#accordion">ARIA Authoring Practices 1.0 accordion</a> recommendation.</p>
+    <p>Instead of a multi-selectable tabs interface, with all its associated ARIA roles and attributes, as well as the huge amount of Javascript for keyboard and focus control, this accordion only uses two ARIA attributes.</p>
+    <ul>
+        <li><a href="http://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-controls">aria-controls</a> is used to establish a relationship between the triggering elements (buttons) and the content they control
+        </li>
+        <li><a href="http://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-expanded">aria-expanded</a> is used on the triggering elements (in this case buttons) to show whether the associated contet is expanded or collapsed.
+        </li>
+    </ul>
+    <p>The pattern consists of headings containing buttons that, when activated, toggle the display of the associated content.</p>
+    <p>The triggering elements have to be focusable and actionable. A button is most appropriate semantically, a link is also valid.</p>
+    <p>aria-expanded is used, along with a visual indicator, to note whether the associated content is visible (aria-expanded="true") or hidden (aria-expanded="false".</p>
+    <p>The aria-controls attribute is used to provide a programmatically determinable relationship between the trigger and the content it controls. Technically, this is not necessary, as the content always follows the trigger element in the content order.</p>
+    <p>The headings are used as quick navigational aids for screen reader users who wish to jump past sections of displayed content to the next triggering element.</p>
+    <p>Javascript is needed to display and hide sections of content in response to the activation of its trigger, as wel as updating the aria-expanded attribute on the trigger.</p>
+    <h3>Why is this approach better?</h3>
+    <p>For the author, it is much easier to implement. It requires a lot less Javascript.</p>
+    <p>For the user it is simpler. The content order is clear, screen readers do not jump in and out of forms/application mode (as it does in tabs). In fact, the multi-selectable tab implementation of an accordion is very difficult to use for a screen reader user, because the tab content is inline with the tab. <a href="https://lists.w3.org/Archives/Public/public-pfwg-comments/2013JulSep/0002.html">See further discussion.</a></p>
+    <h2>Simplified Accordion Live Example</h2>
+    <div id="simpacc">
+        <h2 id="simpacc1" class="simpclickme"><button aria-controls="cont1">Simple Topic 1 <span class="plus"></span></button></h2>
+        <p id="cont1" class="simpmoreinfo">This is information on topic 1. And more information on topic 1. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1. And more information on topic 1.</p>
+
+        <h2 id="simpacc2" class="simpclickme"><button aria-controls="cont2">Simple Topic 2 <span class="plus"></span></button></h2>
+        <p id="cont2" class="simpmoreinfo">This is information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. And more information on topic 2. </p>
+
+        <h2 id="simpacc3" class="simpclickme"><button aria-controls="cont3">Simple Topic 3 <span class="plus"></span></button></h2>
+        <p id="cont3" class="simpmoreinfo">This is information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. <a href="http://deque.com">This is a link to Deque and is used for testing purposes.</a> And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. And more information on topic 3. </p>
+    </div>
+    <h3>Code</h3>
+    <h4>HTML</h4>
+    <h4>CSS</h4>
+    <h4>JavaScript</h4>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="accordion2function.js"></script>
+</body>
+
+</html>
