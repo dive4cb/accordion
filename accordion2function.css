@@ -1,0 +1,41 @@
+        #simpacc h2 {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #simpacc h2 button {
+            font-weight: 700;
+            font-size: 1em;
+            width: 100%;
+            border: thin black solid;
+            text-align: center;
+            background-color: #eee;
+            padding: 0;
+            margin: 2px 0;
+        }
+        
+        p.simpmoreinfo {
+            border: thin black solid;
+            padding: 4px;
+            margin: 0;
+        }
+        
+        h2.simpclickme button span {
+            height: 12px;
+            width: 12px;
+            background-image: url("plus_minus_sprite.gif");
+            display: inline-block;
+        }
+        
+        h2.simpclickme button span.minus {
+            background-position: right;
+        }
+        
+        h2.simpclickme button span.plus {
+            background-position: left;
+        }
+        
+        :focus {
+            outline: 4px solid blue;
+        }
