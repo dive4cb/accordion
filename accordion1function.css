@@ -1,0 +1,33 @@
+    #tablist h2 {
+        width: 100%;
+        border: thin black solid;
+        text-align: center;
+        background-color: #eee;
+        padding: 0;
+        margin: 2px 0;
+    }
+    
+    p.moreinfo {
+        border: thin black solid;
+        padding: 4px;
+        margin: 0;
+    }
+    
+    h2.clickme span {
+        height: 12px;
+        width: 12px;
+        background-image: url("plus_minus_sprite.gif");
+        display: inline-block;
+    }
+    
+    h2.clickme span.minus {
+        background-position: right;
+    }
+    
+    h2.clickme span.plus {
+        background-position: left;
+    }
+    
+    :focus {
+        outline: 4px solid blue;
+    }
